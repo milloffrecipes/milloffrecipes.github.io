@@ -1,0 +1,216 @@
+/* ===================================================
+   Recipe site — shared styles
+   Palette: linen background, herb green + brick accents
+   =================================================== */
+
+:root {
+  --linen: #EFE9DD;
+  --card: #FBF8F2;
+  --ink: #2E2A24;
+  --ink-soft: #7A7266;
+  --herb: #4A5D3A;
+  --herb-dark: #3A4A2D;
+  --brick: #B5563C;
+  --line: #D8D0BE;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--linen);
+  color: var(--ink);
+  font-family: 'Work Sans', -apple-system, sans-serif;
+  line-height: 1.5;
+}
+
+h1, h2, h3, .display {
+  font-family: 'Fraunces', Georgia, serif;
+  font-weight: 600;
+  color: var(--ink);
+  margin: 0;
+}
+
+a { color: var(--herb); text-decoration: none; }
+a:hover { color: var(--brick); }
+
+/* ---------- Masthead ---------- */
+.masthead {
+  text-align: center;
+  padding: 4rem 1.5rem 3rem;
+}
+
+.masthead .eyebrow {
+  display: block;
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--brick);
+  margin-bottom: 0.75rem;
+}
+
+.masthead h1 {
+  font-size: clamp(2.2rem, 5vw, 3.4rem);
+  font-optical-sizing: auto;
+}
+
+.masthead p {
+  color: var(--ink-soft);
+  max-width: 34ch;
+  margin: 0.75rem auto 0;
+  font-size: 1.05rem;
+}
+
+/* ---------- Recipe grid ---------- */
+.grid {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 0 1.5rem 5rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.75rem;
+}
+
+.card {
+  background: var(--card);
+  border-radius: 4px;
+  overflow: hidden;
+  border: 1.5px dashed var(--line);
+  padding: 0.6rem;
+  transition: transform 0.15s ease, border-color 0.15s ease;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  border-color: var(--herb);
+}
+
+.card a { color: inherit; display: block; }
+
+.card .thumb {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border-radius: 3px;
+  object-fit: cover;
+  background: linear-gradient(135deg, var(--herb) 0%, var(--herb-dark) 100%);
+  display: block;
+}
+
+.card .card-body {
+  padding: 1rem 0.6rem 0.4rem;
+}
+
+.card .tag {
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--brick);
+}
+
+.card h2 {
+  font-size: 1.25rem;
+  margin: 0.35rem 0 0.3rem;
+  line-height: 1.25;
+}
+
+.card .note {
+  color: var(--ink-soft);
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+/* ---------- Recipe page ---------- */
+.recipe-wrap {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem 5rem;
+}
+
+.back-link {
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+}
+
+.recipe-hero {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  border-radius: 6px;
+  margin: 1.25rem 0 1.75rem;
+  background: linear-gradient(135deg, var(--herb) 0%, var(--herb-dark) 100%);
+  object-fit: cover;
+  display: block;
+}
+
+.recipe-wrap h1 {
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+}
+
+.recipe-intro {
+  color: var(--ink-soft);
+  font-size: 1.05rem;
+  margin: 0.75rem 0 1.5rem;
+}
+
+.meta-row {
+  display: flex;
+  gap: 1.75rem;
+  flex-wrap: wrap;
+  padding: 1rem 0;
+  border-top: 1px dashed var(--line);
+  border-bottom: 1px dashed var(--line);
+  margin-bottom: 2rem;
+}
+
+.meta-row div { font-size: 0.9rem; }
+.meta-row .label {
+  display: block;
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--brick);
+  margin-bottom: 0.15rem;
+}
+
+.recipe-wrap h2 {
+  font-size: 1.3rem;
+  margin: 2rem 0 0.9rem;
+}
+
+.ingredients {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.ingredients li {
+  padding: 0.5rem 0;
+  border-bottom: 1px dashed var(--line);
+  font-size: 0.98rem;
+}
+
+.steps {
+  padding-left: 1.3rem;
+  margin: 0;
+}
+
+.steps li {
+  padding: 0.4rem 0;
+  font-size: 0.98rem;
+}
+
+.notes {
+  margin-top: 2.5rem;
+  padding: 1.1rem 1.25rem;
+  background: var(--card);
+  border-radius: 4px;
+  border: 1.5px dashed var(--line);
+  font-size: 0.92rem;
+  color: var(--ink-soft);
+}
+
+footer {
+  text-align: center;
+  padding: 2rem 1.5rem 3rem;
+  color: var(--ink-soft);
+  font-size: 0.82rem;
+}
