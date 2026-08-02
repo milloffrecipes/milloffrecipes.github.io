@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Oma's Meatloaf — Milloff Recipes</title>
+  <meta name="description" content="Delicious and simple meatloaf, best served with mashed potatoes, corn, carrots and peas.">
+
+  <!-- These four tags are what Pinterest (and Facebook/iMessage previews) read
+       when someone pins or shares this page. Update the og:image and og:url
+       once your site is live and the photo is uploaded. -->
+  <meta property="og:title" content="Oma's Meatloaf">
+  <meta property="og:description" content="Delicious and simple meatloaf, best served with mashed potatoes, corn, carrots and peas.">
+  <meta property="og:image" content="https://milloffrecipes.github.io/recipes/images/oma-meatloaf.jpg">
+  <meta property="og:url" content="https://milloffrecipes.github.io/recipes/oma's-meatloaf.html">
+  <meta property="og:type" content="article">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Work+Sans:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+  <div class="recipe-wrap">
+
+    <a class="back-link" href="../index.html">&larr; All recipes</a>
+
+    <img class="recipe-hero" src="images/oma-meatloaf" alt="Oma's meatloaf">
+
+    <h1>Oma's Meatloaf</h1>
+    <p class="recipe-intro">
+      Oma's blend of pork and beef meatloaf.
+    </p>
+
+    <div class="meta-row">
+      <div><span class="label">Prep</span>10 min</div>
+      <div><span class="label">Bake</span>1 hour</div>
+      <div><span class="label">Makes</span>1 loaf</div>
+    </div>
+
+    <h2>Ingredients</h2>
+    <ul class="ingredients">
+      <li>500 g ground pork</li>
+      <li>500 g ground beef</li>
+      <li>2 eggs, well beaten</li>
+      <li>1/2 cup bread crumbs</li>
+      <li>onion, chopped</li>
+      <li>salt and pepper, to taste</li>
+    </ul>
+
+    <h2>Steps</h2>
+    <ol class="steps">
+      <li>Combine all ingredients in a large bowl.</li>
+      <li>Mix until combined.</li>
+      <li>Put in a well-greased loaf pan.</li>
+      <li>Cook at 450°F for 1 hour (1/2 hour per pound).</li>
+    </ol>
+
+    <div class="notes">
+      <strong>Notes:</strong> Serve with mashed potatoes and side vegetables (corn, carrots, peas, beans, etc.)
+    </div>
+
+  </div>
+
+  <footer>Milloff Recipes &middot; a family collection</footer>
+
+</body>
+</html>
