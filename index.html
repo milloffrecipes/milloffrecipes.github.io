@@ -17,7 +17,13 @@
     <h1>Recipes We Keep Making</h1>
     <p>A running collection of the meals worth writing down and passing along.</p>
   </header>
-
+  
+<div class="filters">
+    <button class="filter-btn active" data-filter="all">All</button>
+    <button class="filter-btn" data-filter="baking">Baking</button>
+    <button class="filter-btn" data-filter="meals">Meals</button>
+  </div>
+  
   <main class="grid">
 
     <!-- ============================================
@@ -25,7 +31,7 @@
          block to add a new recipe to the homepage.
          ============================================ -->
 
-    <div class="card">
+    <div class="card" data-category="baking">
       <a href="recipes/rosemary-parmesan-bread.html">
         <img class="thumb" src="recipes/images/rosemary-parmesan-bread.jpg" alt="Rosemary Parmesan bread">
         <div class="card-body">
@@ -36,7 +42,7 @@
       </a>
     </div>
 
-      <div class="card">
+      <div class="card" data-category="baking">
       <a href="recipes/pb-muffins.html">
         <img class="thumb" src="recipes/images/pb-muffins.jpg" alt="Peanut Butter Muffins">
         <div class="card-body">
@@ -47,7 +53,7 @@
       </a>
     </div>
 
-   <div class="card">
+   <div class="card" data-category="meals">
       <a href="recipes/oma's-meatloaf.html">
         <img class="thumb" src="recipes/images/oma-meatloaf.jpg" alt="Oma's Meatloaf">
         <div class="card-body">
@@ -58,7 +64,7 @@
       </a>
     </div>
 
-       <div class="card">
+       <div class="card" data-category="meals">
       <a href="recipes/gramma's-lasagna.html">
         <img class="thumb" src="recipes/images/lasagna.jpg" alt="Gramma's Lasagna">
         <div class="card-body">
@@ -69,7 +75,7 @@
       </a>
     </div>
 
-   <div class="card">
+   <div class="card" data-category="baking">
       <a href="recipes/gramma's-banana-chocolate-chip-muffins.html">
         <img class="thumb" src="recipes/images/banana-muffins.jpg" alt="Gramma's Banana Chocolate Chip Muffins">
         <div class="card-body">
@@ -81,7 +87,7 @@
     </div>
 
 
-      <div class="card">
+      <div class="card" data-category="meals">
       <a href="recipes/pork-schnitzel.html">
         <img class="thumb" src="recipes/images/schnitzel.jpg" alt="German Style Pork Schnitzel">
         <div class="card-body">
@@ -109,6 +115,23 @@
   </main>
 
   <footer>Milloff Recipes &middot; a family collection</footer>
+<script>
+  const buttons = document.querySelectorAll('.filter-btn');
+  const cards = document.querySelectorAll('.card');
 
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      buttons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const filter = btn.dataset.filter;
+      cards.forEach(card => {
+        card.style.display =
+          (filter === 'all' || card.dataset.category === filter) ? '' : 'none';
+      });
+    });
+  });
+</script>
+  
 </body>
 </html>
