@@ -253,3 +253,25 @@ footer {
   color: var(--ink-soft);
   margin-left: 0.5rem;
 }
+
+.search-bar {
+  max-width: 400px;
+  margin: 0 auto 2rem;
+  padding: 0 1.5rem;
+}
+
+.search-bar input {
+  width: 100%;
+  font-family: 'Work Sans', sans-serif;
+  font-size: 0.95rem;
+  padding: 0.6rem 1rem;
+  border-radius: 999px;
+  border: 1.5px solid var(--line);
+  background: var(--card);
+  color: var(--ink);
+}
+
+.search-bar input:focus {
+  outline: none;
+  border-color: var(--herb);
+}
