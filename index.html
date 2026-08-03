@@ -166,6 +166,15 @@
 
   </main>
 
+  <script>
+  const grid = document.querySelector('.grid');
+  const cardList = Array.from(grid.querySelectorAll('.card'));
+  cardList.sort((a, b) =>
+    a.querySelector('h2').textContent.localeCompare(b.querySelector('h2').textContent)
+  );
+  cardList.forEach(card => grid.appendChild(card));
+</script>
+  
   <footer>Milloff Recipes &middot; a family collection</footer>
 
   <script>
