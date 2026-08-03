@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Milloff Recipes</title>
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-<meta name="theme-color" content="#4A5D3A">
+  <meta name="theme-color" content="#4A5D3A">
   <meta name="description" content="Family recipes worth keeping.">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,21 +19,27 @@
     <h1>Recipes We Keep Making</h1>
     <p>A running collection of the meals worth writing down and passing along.</p>
   </header>
-  
-<div class="filters">
+
+  <div class="filters">
     <button class="filter-btn active" data-filter="all">All</button>
     <button class="filter-btn" data-filter="baking">Baking</button>
     <button class="filter-btn" data-filter="meals">Meals</button>
+    <button class="filter-btn" data-filter="oma">Oma</button>
+    <button class="filter-btn" data-filter="gramma">Gramma</button>
   </div>
-  
+
   <main class="grid">
 
     <!-- ============================================
          ONE CARD PER RECIPE. Copy this whole <div class="card">...</div>
          block to add a new recipe to the homepage.
+
+         data-categories can hold MULTIPLE space-separated values,
+         e.g. data-categories="baking gramma" — the card will show
+         under both the "Baking" filter AND the "Gramma" filter.
          ============================================ -->
 
-    <div class="card" data-category="baking">
+    <div class="card" data-categories="baking">
       <a href="recipes/rosemary-parmesan-bread.html">
         <img class="thumb" src="recipes/images/rosemary-parmesan-bread.jpg" alt="Rosemary Parmesan bread">
         <div class="card-body">
@@ -44,7 +50,7 @@
       </a>
     </div>
 
-      <div class="card" data-category="baking">
+    <div class="card" data-categories="baking">
       <a href="recipes/pb-muffins.html">
         <img class="thumb" src="recipes/images/pb-muffins.jpg" alt="Peanut Butter Muffins">
         <div class="card-body">
@@ -55,41 +61,40 @@
       </a>
     </div>
 
-   <div class="card" data-category="meals">
+    <div class="card" data-categories="meals oma">
       <a href="recipes/oma's-meatloaf.html">
         <img class="thumb" src="recipes/images/oma-meatloaf.jpg" alt="Oma's Meatloaf">
         <div class="card-body">
-          <span class="tag">Meals</span>
+          <span class="tag">Meals</span><span class="tag-secondary">Oma's</span>
           <h2>Oma's Meatloaf</h2>
           <p class="note">Oma's classic meatloaf recipe.</p>
         </div>
       </a>
     </div>
 
-       <div class="card" data-category="meals">
+    <div class="card" data-categories="meals gramma">
       <a href="recipes/gramma's-lasagna.html">
         <img class="thumb" src="recipes/images/lasagna.jpg" alt="Gramma's Lasagna">
         <div class="card-body">
-          <span class="tag">Meals</span>
+          <span class="tag">Meals</span><span class="tag-secondary">Gramma's</span>
           <h2>Gramma's Lasagna</h2>
           <p class="note">Gramma's homemade lasagna.</p>
         </div>
       </a>
     </div>
 
-   <div class="card" data-category="baking">
+    <div class="card" data-categories="baking gramma">
       <a href="recipes/gramma's-banana-chocolate-chip-muffins.html">
         <img class="thumb" src="recipes/images/banana-muffins.jpg" alt="Gramma's Banana Chocolate Chip Muffins">
         <div class="card-body">
-          <span class="tag">Baking</span>
+          <span class="tag">Baking</span><span class="tag-secondary">Gramma's</span>
           <h2>Gramma's Banana Chocolate Chip Muffins</h2>
           <p class="note">Gramma's homemade muffin recipe</p>
         </div>
       </a>
     </div>
 
-
-      <div class="card" data-category="meals">
+    <div class="card" data-categories="meals">
       <a href="recipes/pork-schnitzel.html">
         <img class="thumb" src="recipes/images/schnitzel.jpg" alt="German Style Pork Schnitzel">
         <div class="card-body">
@@ -100,18 +105,18 @@
       </a>
     </div>
 
-     <div class="card" data-category="meals">
+    <div class="card" data-categories="meals oma">
       <a href="recipes/oma's-roast.html">
         <img class="thumb" src="recipes/images/roast.jpg" alt="Oma's roast">
         <div class="card-body">
-          <span class="tag">Meals</span>
+          <span class="tag">Meals</span><span class="tag-secondary">Oma's</span>
           <h2>Oma's Roast</h2>
           <p class="note">Oma's Roast</p>
         </div>
       </a>
     </div>
-    
- <div class="card" data-category="meals">
+
+    <div class="card" data-categories="meals">
       <a href="recipes/beef-stew.html">
         <img class="thumb" src="recipes/images/stew.jpg" alt="Beef Stew">
         <div class="card-body">
@@ -122,9 +127,9 @@
       </a>
     </div>
 
-    <div class="card" data-category="meals">
+    <div class="card" data-categories="meals">
       <a href="recipes/beef-strips.html">
-        <img class="thumb" src="recipes/images/beef-strips" alt="Beef Strips">
+        <img class="thumb" src="recipes/images/beef-strips.jpg" alt="Beef Strips">
         <div class="card-body">
           <span class="tag">Meals</span>
           <h2>Beef Strips</h2>
@@ -133,24 +138,24 @@
       </a>
     </div>
 
-<div class="card" data-category="meals">
+    <div class="card" data-categories="meals oma">
       <a href="recipes/oma's-goulash.html">
         <img class="thumb" src="recipes/images/goulash.jpg" alt="Oma's Goulash">
         <div class="card-body">
-          <span class="tag">Meals</span>
+          <span class="tag">Meals</span><span class="tag-secondary">Oma's</span>
           <h2>Oma's Goulash</h2>
           <p class="note">Oma's Goulash</p>
         </div>
       </a>
     </div>
-    
-    <!-- Example of a second card, ready to fill in and un-comment:
 
-    <div class="card">
+    <!-- Example of a new card, ready to fill in and un-comment:
+
+    <div class="card" data-categories="category1 category2">
       <a href="recipes/your-recipe-file-name.html">
         <img class="thumb" src="recipes/images/your-photo.jpg" alt="Description of the dish">
         <div class="card-body">
-          <span class="tag">Category</span>
+          <span class="tag">Category</span><span class="tag-secondary">Optional label</span>
           <h2>Recipe Name</h2>
           <p class="note">One short line about it.</p>
         </div>
@@ -162,23 +167,25 @@
   </main>
 
   <footer>Milloff Recipes &middot; a family collection</footer>
-<script>
-  const buttons = document.querySelectorAll('.filter-btn');
-  const cards = document.querySelectorAll('.card');
 
-  buttons.forEach(btn => {
-    btn.addEventListener('click', () => {
-      buttons.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
+  <script>
+    const buttons = document.querySelectorAll('.filter-btn');
+    const cards = document.querySelectorAll('.card');
 
-      const filter = btn.dataset.filter;
-      cards.forEach(card => {
-        card.style.display =
-          (filter === 'all' || card.dataset.category === filter) ? '' : 'none';
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        buttons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const filter = btn.dataset.filter;
+        cards.forEach(card => {
+          const cats = card.dataset.categories.split(' ');
+          card.style.display =
+            (filter === 'all' || cats.includes(filter)) ? '' : 'none';
+        });
       });
     });
-  });
-</script>
-  
+  </script>
+
 </body>
 </html>
