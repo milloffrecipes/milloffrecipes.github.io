@@ -20,12 +20,25 @@
     <p>A running collection of the meals worth writing down and passing along.</p>
   </header>
 
+  <!-- COURSE filters -->
   <div class="filters">
-    <button class="filter-btn active" data-filter="all">All</button>
-    <button class="filter-btn" data-filter="baking">Baking</button>
-    <button class="filter-btn" data-filter="meals">Meals</button>
-    <button class="filter-btn" data-filter="oma">Oma</button>
-    <button class="filter-btn" data-filter="gramma">Gramma</button>
+    <button class="filter-btn active" data-course="all">All</button>
+    <button class="filter-btn" data-course="baking">Baking</button>
+    <button class="filter-btn" data-course="meals">Meals</button>
+    <button class="filter-btn" data-course="snacks">Snacks</button>
+    <button class="filter-btn" data-course="appetizers">Appetizers</button>
+    <button class="filter-btn" data-course="sides">Sides</button>
+    <button class="filter-btn" data-course="breakfast">Breakfast</button>
+    <button class="filter-btn" data-course="sauces">Sauces</button>
+  </div>
+
+  <!-- FAMILY filters -->
+  <div class="filters">
+    <span style="color: var(--ink-soft); font-size: 0.85rem; align-self: center;">Family:</span>
+    <button class="filter-btn active" data-family="all">All</button>
+    <button class="filter-btn" data-family="oma">Oma</button>
+    <button class="filter-btn" data-family="gramma">Gramma</button>
+    <button class="filter-btn" data-family="gigi">Gigi</button>
   </div>
 
   <main class="grid">
@@ -34,9 +47,13 @@
          ONE CARD PER RECIPE. Copy this whole <div class="card">...</div>
          block to add a new recipe to the homepage.
 
-         data-categories can hold MULTIPLE space-separated values,
-         e.g. data-categories="baking gramma" — the card will show
-         under both the "Baking" filter AND the "Gramma" filter.
+         Cards auto-sort alphabetically on page load — add a new
+         card ANYWHERE in this list, order doesn't matter.
+
+         data-categories holds ALL applicable tags, space-separated —
+         one course tag (baking/meals/snacks/appetizers/sides/
+         breakfast/sauces) plus an optional family tag (oma/gramma/gigi).
+         e.g. data-categories="breakfast gigi"
          ============================================ -->
 
     <div class="card" data-categories="baking">
@@ -61,8 +78,7 @@
       </a>
     </div>
 
-    
- <div class="card" data-categories="baking oma">
+    <div class="card" data-categories="baking oma">
       <a href="recipes/oma-apple-cake-cherry-cake.html">
         <img class="thumb" src="recipes/images/omaapplecake.jpg" alt="Oma's Apple or Cherry Cake">
         <div class="card-body">
@@ -73,7 +89,7 @@
       </a>
     </div>
 
- <div class="card" data-categories="meals">
+    <div class="card" data-categories="meals">
       <a href="recipes/cheese-cappelletti.html">
         <img class="thumb" src="recipes/images/cheese-cappelletti.jpg" alt="Cheese Cappelletti">
         <div class="card-body">
@@ -83,7 +99,7 @@
         </div>
       </a>
     </div>
-    
+
     <div class="card" data-categories="meals oma">
       <a href="recipes/oma's-meatloaf.html">
         <img class="thumb" src="recipes/images/oma-meatloaf.jpg" alt="Oma's Meatloaf">
@@ -174,11 +190,11 @@
 
     <!-- Example of a new card, ready to fill in and un-comment:
 
-    <div class="card" data-categories="category1 category2">
+    <div class="card" data-categories="course-tag family-tag">
       <a href="recipes/your-recipe-file-name.html">
         <img class="thumb" src="recipes/images/your-photo.jpg" alt="Description of the dish">
         <div class="card-body">
-          <span class="tag">Category</span><span class="tag-secondary">Optional label</span>
+          <span class="tag">Course</span><span class="tag-secondary">Optional family label</span>
           <h2>Recipe Name</h2>
           <p class="note">One short line about it.</p>
         </div>
@@ -189,32 +205,48 @@
 
   </main>
 
-  <script>
-  const grid = document.querySelector('.grid');
-  const cardList = Array.from(grid.querySelectorAll('.card'));
-  cardList.sort((a, b) =>
-    a.querySelector('h2').textContent.localeCompare(b.querySelector('h2').textContent)
-  );
-  cardList.forEach(card => grid.appendChild(card));
-</script>
-  
   <footer>Milloff Recipes &middot; a family collection</footer>
 
   <script>
-    const buttons = document.querySelectorAll('.filter-btn');
+    // Alphabetize cards on load, regardless of their order in the HTML
+    const grid = document.querySelector('.grid');
+    const cardList = Array.from(grid.querySelectorAll('.card'));
+    cardList.sort((a, b) =>
+      a.querySelector('h2').textContent.localeCompare(b.querySelector('h2').textContent)
+    );
+    cardList.forEach(card => grid.appendChild(card));
+
+    // Two-tier filtering: Course + Family, combined together
     const cards = document.querySelectorAll('.card');
+    const courseButtons = document.querySelectorAll('[data-course]');
+    const familyButtons = document.querySelectorAll('[data-family]');
+    let activeCourse = 'all';
+    let activeFamily = 'all';
 
-    buttons.forEach(btn => {
+    function applyFilters() {
+      cards.forEach(card => {
+        const cats = card.dataset.categories.split(' ');
+        const matchesCourse = activeCourse === 'all' || cats.includes(activeCourse);
+        const matchesFamily = activeFamily === 'all' || cats.includes(activeFamily);
+        card.style.display = (matchesCourse && matchesFamily) ? '' : 'none';
+      });
+    }
+
+    courseButtons.forEach(btn => {
       btn.addEventListener('click', () => {
-        buttons.forEach(b => b.classList.remove('active'));
+        courseButtons.forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
+        activeCourse = btn.dataset.course;
+        applyFilters();
+      });
+    });
 
-        const filter = btn.dataset.filter;
-        cards.forEach(card => {
-          const cats = card.dataset.categories.split(' ');
-          card.style.display =
-            (filter === 'all' || cats.includes(filter)) ? '' : 'none';
-        });
+    familyButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        familyButtons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        activeFamily = btn.dataset.family;
+        applyFilters();
       });
     });
   </script>
