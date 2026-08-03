@@ -314,54 +314,72 @@
   <footer>Milloff Recipes &middot; a family collection</footer>
 
   <script>
-    // Alphabetize cards on load, regardless of their order in the HTML
-    const grid = document.querySelector('.grid');
-    const cardList = Array.from(grid.querySelectorAll('.card'));
-    cardList.sort((a, b) =>
-      a.querySelector('h2').textContent.localeCompare(b.querySelector('h2').textContent)
-    );
-    cardList.forEach(card => grid.appendChild(card));
+  // Alphabetize cards on load, regardless of their order in the HTML
+  const grid = document.querySelector('.grid');
+  const cardList = Array.from(grid.querySelectorAll('.card'));
+  cardList.sort((a, b) =>
+    a.querySelector('h2').textContent.localeCompare(b.querySelector('h2').textContent)
+  );
+  cardList.forEach(card => grid.appendChild(card));
 
-    // Two-tier filtering: Course + Family + Search, all combined
-    const cards = document.querySelectorAll('.card');
-    const courseButtons = document.querySelectorAll('[data-course]');
-    const familyButtons = document.querySelectorAll('[data-family]');
-    const searchInput = document.getElementById('recipe-search');
-    let activeCourse = 'all';
-    let activeFamily = 'all';
+  // Two-tier filtering: Course + Family + Search (title + ingredients)
+  const cards = document.querySelectorAll('.card');
+  const courseButtons = document.querySelectorAll('[data-course]');
+  const familyButtons = document.querySelectorAll('[data-family]');
+  const searchInput = document.getElementById('recipe-search');
+  let activeCourse = 'all';
+  let activeFamily = 'all';
 
-    function applyFilters() {
-      const searchTerm = searchInput.value.toLowerCase().trim();
-      cards.forEach(card => {
-        const cats = card.dataset.categories.split(' ');
-        const matchesCourse = activeCourse === 'all' || cats.includes(activeCourse);
-        const matchesFamily = activeFamily === 'all' || cats.includes(activeFamily);
-        const title = card.querySelector('h2').textContent.toLowerCase();
-        const matchesSearch = searchTerm === '' || title.includes(searchTerm);
-        card.style.display = (matchesCourse && matchesFamily && matchesSearch) ? '' : 'none';
-      });
+  function applyFilters() {
+    const searchTerm = searchInput.value.toLowerCase().trim();
+    cards.forEach(card => {
+      const cats = card.dataset.categories.split(' ');
+      const matchesCourse = activeCourse === 'all' || cats.includes(activeCourse);
+      const matchesFamily = activeFamily === 'all' || cats.includes(activeFamily);
+      const title = card.querySelector('h2').textContent.toLowerCase();
+      const ingredientText = card.dataset.ingredientText || '';
+      const matchesSearch = searchTerm === '' ||
+        title.includes(searchTerm) || ingredientText.includes(searchTerm);
+      card.style.display = (matchesCourse && matchesFamily && matchesSearch) ? '' : 'none';
+    });
+  }
+
+  courseButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      courseButtons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      activeCourse = btn.dataset.course;
+      applyFilters();
+    });
+  });
+
+  familyButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      familyButtons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      activeFamily = btn.dataset.family;
+      applyFilters();
+    });
+  });
+
+  searchInput.addEventListener('input', applyFilters);
+
+  // Quietly fetch each recipe page's ingredient list in the background
+  async function loadIngredients(card) {
+    try {
+      const url = card.querySelector('a').getAttribute('href');
+      const res = await fetch(url);
+      const html = await res.text();
+      const doc = new DOMParser().parseFromString(html, 'text/html');
+      const items = Array.from(doc.querySelectorAll('.ingredients li'))
+        .map(li => li.textContent.toLowerCase());
+      card.dataset.ingredientText = items.join(' ');
+    } catch (e) {
+      card.dataset.ingredientText = '';
     }
-
-    courseButtons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        courseButtons.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        activeCourse = btn.dataset.course;
-        applyFilters();
-      });
-    });
-
-    familyButtons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        familyButtons.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        activeFamily = btn.dataset.family;
-        applyFilters();
-      });
-    });
-
-    searchInput.addEventListener('input', applyFilters);
-  </script>
+  }
+  cards.forEach(loadIngredients);
+</script>
 
 </body>
 </html>
