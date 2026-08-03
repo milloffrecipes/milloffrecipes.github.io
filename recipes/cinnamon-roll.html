@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gramma's Cinnamon "Roles" — Milloff Recipes</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<meta name="theme-color" content="#4A5D3A">
+  <meta name="description" content="Gramma's Cinnamon "Roles"">
+
+  <!-- These four tags are what Pinterest (and Facebook/iMessage previews) read
+       when someone pins or shares this page. Update the og:image and og:url
+       once your site is live and the photo is uploaded. -->
+  <meta property="og:title" content="Gramma's Cinnamon "Roles"">
+  <meta property="og:description" content="Sweet Cinnamoon Rolls.">
+  <meta property="og:image" content="https://milloffrecipes.github.io/recipes/images/cinnamon-roll.jpg">
+  <meta property="og:url" content="https://milloffrecipes.github.io/recipes/cinnamon-roll.html">
+  <meta property="og:type" content="article">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Work+Sans:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+  <div class="recipe-wrap">
+
+    <a class="back-link" href="../index.html">&larr; All recipes</a>
+
+    <img class="recipe-hero" src="images/cinnamon-roll.jpg" alt="Cinnamon Rolls">
+
+    <h1>Gramma's Cinnamon "Roles"</h1>
+    <p class="recipe-intro">
+      Classic cinnamon rolls.
+    </p>
+
+    <div class="meta-row">
+      <div><span class="label">Prep</span>30 min</div>
+      <div><span class="label">Rise</span>3 hours</div>
+      <div><span class="label">Bake</span>20 to 25 min</div>
+<div><span class="label">Serves</span><span class="amt" data-amount="12">12</span> servings</div>    </div>
+
+<div class="filters">
+  <span style="color: var(--ink-soft); font-size: 0.85rem; align-self: center;">Scale:</span>
+  <button class="filter-btn active" data-mult="1">1x</button>
+  <button class="filter-btn" data-mult="2">2x</button>
+  <button class="filter-btn" data-mult="3">3x</button>
+</div>
+    
+    <h2>Ingredients</h2>
+    <ul class="ingredients">
+      <li><strong>Dough</strong>
+      <li><span class="amt" data-amount="2.5">2 1/2</span> cups flour</li>
+      <li><span class="amt" data-amount="1.5">1 1/2</span> tsp yeast</li>
+      <li><span class="amt" data-amount="0.5">1/2</span> tsp salt</li>
+      <li><span class="amt" data-amount="0.333333333">1/3</span> cup sugar</li>
+      <li><span class="amt" data-amount="2">2</span> tbsp unsalted butter (and more for brushing)</li>
+      <li><span class="amt" data-amount="1">1</span> egg</li>
+      <li><strong>Filling</strong></li>
+      <li><span class="amt" data-amount="0.5">1/2</span> cup skim milk</li>
+      <li><span class="amt" data-amount="0.5">1/2</span> cup sugar</li>
+      <li><span class="amt" data-amount="2">2</span> tsp ground cinnamon</li>
+      <li><span class="amt" data-amount="2">2</span> tbsp minced orange zest</li>
+      <li><strong>Icing</strong></li>
+      <li><span class="amt" data-amount="0.5">1/2</span> cup sugar</li>
+      <li><span class="amt" data-amount="0.5">1/2</span> cup orange juice</li>
+    </ul>
+
+    <h2>Steps</h2>
+    <ol class="steps">
+      <li>Combine flour, yeast, salt, and sugar in a food processor</li>
+      <li>Add 2 tbsp butter and egg.Pulse a few times to mix.</li>
+      <li>With machine running, pour <em>most</em> of the milk through tube. Process until a ball forms. Add more milk 1 tsp at a time if needed.</li>
+      <li>Knead by hand on a lightly floured surface, adding more milk or flour as needed.</li>
+      <li>Butter a bowl and place dough in it, turning to coat. Cover and let rise in a warm area for <strong>2 hours</strong>.</li>
+      <li>Roll out dough into 1/2 inch thick rectangle. Brush liberally with butter. Spread the filling mixture (sugar, cinnamon and orange zest).</li>
+      <li><em>If desired, add raisins or chopped nuts.</em></li>
+      <li>Roll up jelly-roll style. Then cut into 1 to 1 1/2 inch thick slices.</li>
+      <li>Place rolls in a buttered round pan. Place one in the middle and work the others around so that they are touching. If doubling/tripling recipe, use extra round pans.</li>
+      <li>Cover and let rise until puffy, about <strong>1 hour</strong>.</li>
+      <li>While rolls are rising, boil together sugar and orange juice until thickened.</li>
+      <li>Just before baking, brush with butter and then orange juice mixture.</li>
+      <li>Bake at 400°F for 20 to 25 minutes.</li>
+    </ol>
+
+    <div class="notes">
+      <strong>Notes:</strong>
+    </div>
+
+  </div>
+
+  <footer>Milloff Recipes &middot; a family collection</footer>
+
+  <script>
+  function toFraction(value) {
+    const whole = Math.floor(value);
+    const frac = value - whole;
+    const fractions = [
+      [0.125,'⅛'],[0.25,'¼'],[0.333,'⅓'],[0.375,'⅜'],
+      [0.5,'½'],[0.625,'⅝'],[0.667,'⅔'],[0.75,'¾'],[0.875,'⅞']
+    ];
+    if (frac < 0.03) return whole === 0 ? '0' : `${whole}`;
+    let closest = null, minDiff = 0.03;
+    for (const [dec, sym] of fractions) {
+      const diff = Math.abs(frac - dec);
+      if (diff < minDiff) { minDiff = diff; closest = sym; }
+    }
+    return closest ? (whole === 0 ? closest : `${whole}${closest}`) : Math.round(value*100)/100 + '';
+  }
+
+  const scaleButtons = document.querySelectorAll('[data-mult]');
+  const amounts = document.querySelectorAll('.amt');
+  scaleButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      scaleButtons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const mult = parseFloat(btn.dataset.mult);
+      amounts.forEach(span => {
+        span.textContent = toFraction(parseFloat(span.dataset.amount) * mult);
+      });
+    });
+  });
+</script>
+  
+</body>
+</html>
+
+
