@@ -245,3 +245,11 @@ footer {
   border-color: var(--herb);
   color: var(--card);
 }
+
+
+.card .tag-secondary {
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  color: var(--ink-soft);
+  margin-left: 0.5rem;
+}
