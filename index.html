@@ -20,6 +20,10 @@
     <p>A running collection of the meals worth writing down and passing along.</p>
   </header>
 
+  <div class="search-bar">
+    <input type="text" id="recipe-search" placeholder="Search recipes…">
+  </div>
+
   <!-- COURSE filters -->
   <div class="filters">
     <button class="filter-btn active" data-course="all">All</button>
@@ -31,7 +35,7 @@
     <button class="filter-btn" data-course="meals">Meals</button>
     <button class="filter-btn" data-course="sauces">Sauces</button>
     <button class="filter-btn" data-course="sides">Sides</button>
-    <button class="filter-btn" data-course="snacks">Snacks</button>    
+    <button class="filter-btn" data-course="snacks">Snacks</button>
   </div>
 
   <!-- FAMILY filters -->
@@ -55,8 +59,8 @@
 
          data-categories holds ALL applicable tags, space-separated —
          one course tag (baking/meals/snacks/appetizers/sides/
-         breakfast/sauces) plus an optional family tag (oma/gramma/gigi).
-         e.g. data-categories="breakfast gigi"
+         breakfast/sauces/dessert/drinks) plus an optional family tag
+         (oma/gramma/rebecca/gigi). e.g. data-categories="breakfast gigi"
          ============================================ -->
 
     <div class="card" data-categories="baking rebecca">
@@ -70,7 +74,7 @@
       </a>
     </div>
 
- <div class="card" data-categories="baking dessert oma">
+    <div class="card" data-categories="baking dessert oma">
       <a href="recipes/oma-cake.html">
         <img class="thumb" src="recipes/images/oma-cake.jpg" alt="Oma Cake">
         <div class="card-body">
@@ -81,9 +85,9 @@
       </a>
     </div>
 
-     <div class="card" data-categories="drinks gigi">
-      <a href="recipes/pb-muffins.html">
-        <img class="thumb" src="recipes/images/tangy-party-pucnh.jpg" alt="Gigi's Tangy Party Punch">
+    <div class="card" data-categories="drinks gigi">
+      <a href="recipes/tangy-party-punch.html">
+        <img class="thumb" src="recipes/images/tangy-party-punch.jpg" alt="Gigi's Tangy Party Punch">
         <div class="card-body">
           <span class="tag">Drinks</span><span class="tag-secondary">Gigi's</span>
           <h2>Gigi's Tangy Party Punch</h2>
@@ -91,7 +95,7 @@
         </div>
       </a>
     </div>
-    
+
     <div class="card" data-categories="baking rebecca">
       <a href="recipes/pb-muffins.html">
         <img class="thumb" src="recipes/images/pb-muffins.jpg" alt="Peanut Butter Muffins">
@@ -213,7 +217,7 @@
       </a>
     </div>
 
- <div class="card" data-categories="sides rebecca">
+    <div class="card" data-categories="sides rebecca">
       <a href="recipes/hashbrown-casserole.html">
         <img class="thumb" src="recipes/images/hashbrown-casserole.jpg" alt="Hashbrown Casserole">
         <div class="card-body">
@@ -223,7 +227,7 @@
         </div>
       </a>
     </div>
-    
+
     <!-- Example of a new card, ready to fill in and un-comment:
 
     <div class="card" data-categories="course-tag family-tag">
@@ -252,19 +256,23 @@
     );
     cardList.forEach(card => grid.appendChild(card));
 
-    // Two-tier filtering: Course + Family, combined together
+    // Two-tier filtering: Course + Family + Search, all combined
     const cards = document.querySelectorAll('.card');
     const courseButtons = document.querySelectorAll('[data-course]');
     const familyButtons = document.querySelectorAll('[data-family]');
+    const searchInput = document.getElementById('recipe-search');
     let activeCourse = 'all';
     let activeFamily = 'all';
 
     function applyFilters() {
+      const searchTerm = searchInput.value.toLowerCase().trim();
       cards.forEach(card => {
         const cats = card.dataset.categories.split(' ');
         const matchesCourse = activeCourse === 'all' || cats.includes(activeCourse);
         const matchesFamily = activeFamily === 'all' || cats.includes(activeFamily);
-        card.style.display = (matchesCourse && matchesFamily) ? '' : 'none';
+        const title = card.querySelector('h2').textContent.toLowerCase();
+        const matchesSearch = searchTerm === '' || title.includes(searchTerm);
+        card.style.display = (matchesCourse && matchesFamily && matchesSearch) ? '' : 'none';
       });
     }
 
@@ -285,6 +293,8 @@
         applyFilters();
       });
     });
+
+    searchInput.addEventListener('input', applyFilters);
   </script>
 
 </body>
