@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hashbrown Casserole — Milloff Recipes</title>
+  <link rel="icon" type="image/svg+xml" href="https://milloffrecipes.github.io/favicon.svg">
+  <meta name="theme-color" content="#4A5D3A">
+  <meta name="description" content="An Easter Favourite">
+
+  <meta property="og:title" content="Hashbrown Casserole">
+  <meta property="og:description" content="An Easter Favourite">
+  <meta property="og:image" content="https://milloffrecipes.github.io/recipes/images/hashbrown-casserole.jpg">
+  <meta property="og:url" content="https://milloffrecipes.github.io/recipes/hashbrown-casserole.html">
+  <meta property="og:type" content="article">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com/">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600&amp;family=Work+Sans:wght@400;500;600&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://milloffrecipes.github.io/style.css">
+</head>
+<body>
+
+  <div class="recipe-wrap">
+
+    <a class="back-link" href="https://milloffrecipes.github.io/index.html">← All recipes</a>
+
+    <img class="recipe-hero" src="images/hashbrown-casserole.jpg" alt="Hashbrown Casserole">
+
+    <h1>Hashbrown Casserole</h1>
+    <p class="recipe-intro">
+      An Easter Favourite
+    </p>
+
+    <div class="meta-row">
+      <div><span class="label">Prep</span>10 minutes</div>
+      <div><span class="label">Bake</span>50 - 55 minutes</div>
+      <div><span class="label">Makes</span><span class="amt" data-amount="2">2</span> Quarts</div>
+    </div>
+
+<div class="filters">
+  <span style="color: var(--ink-soft); font-size: 0.85rem; align-self: center;">Scale:</span>
+  <button class="filter-btn active" data-mult="1">1x</button>
+  <button class="filter-btn" data-mult="2">2x</button>
+  <button class="filter-btn" data-mult="3">3x</button>
+</div>
+
+    <h2>Ingredients</h2>
+    <ul class="ingredients">
+      <li><span class="amt" data-amount="1">1</span> can cream of chicken soup</li>
+      <li><span class="amt" data-amount="0.6666666666666666">⅔</span> container sour cream</li>
+      <li><span class="amt" data-amount="4">4</span> cups frozen hashbrown</li>
+      <li><span class="amt" data-amount="1">1</span> cup diced cooked ham (~125 g)</li>
+      <li><span class="amt" data-amount="1">1</span> cup cubed cheddar cheese</li>
+      <li><span class="amt" data-amount="0.25">¼</span> cup chopped onion</li>
+      <li><span class="amt" data-amount="0.125">⅛</span> tsp ground black pepper</li>
+      <li><span class="amt" data-amount="1">1</span> cup cornflakes</li>
+      <li><span class="amt" data-amount="3">3</span> tbsp melted butter</li>
+    </ul>
+
+    <h2>Steps</h2>
+    <ol class="steps">
+      <li>Preheat oven to 350°F</li>
+      <li>Stir together soup and sour cream</li>
+      <li>Stir in hashbrown, ham cheese, onion, and pepper</li>
+      <li>Spread into 2 qt. baking dish</li>
+      <li>Combine cornflakes and butter. Sprinkle over potato mixture</li>
+      <li>Bake uncovered for 50 - 55 minutes or until hot and bubbly</li>
+      <li>Let stand 10 minutes before serving</li>
+    </ol>
+
+    <div class="notes">
+      <strong>Notes:</strong> Substitute shredded cheese for cornflakes and butter
+    </div>
+
+  </div>
+
+  <footer>Milloff Recipes · a family collection</footer>
+  <script>
+  function toFraction(value) {
+    const whole = Math.floor(value);
+    const frac = value - whole;
+    const fractions = [
+      [0.125,'⅛'],[0.25,'¼'],[0.333,'⅓'],[0.375,'⅜'],
+      [0.5,'½'],[0.625,'⅝'],[0.667,'⅔'],[0.75,'¾'],[0.875,'⅞']
+    ];
+    if (frac < 0.03) return whole === 0 ? '0' : `${whole}`;
+    let closest = null, minDiff = 0.03;
+    for (const [dec, sym] of fractions) {
+      const diff = Math.abs(frac - dec);
+      if (diff < minDiff) { minDiff = diff; closest = sym; }
+    }
+    return closest ? (whole === 0 ? closest : `${whole}${closest}`) : Math.round(value*100)/100 + '';
+  }
+
+  const scaleButtons = document.querySelectorAll('[data-mult]');
+  const amounts = document.querySelectorAll('.amt');
+  scaleButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      scaleButtons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const mult = parseFloat(btn.dataset.mult);
+      amounts.forEach(span => {
+        span.textContent = toFraction(parseFloat(span.dataset.amount) * mult);
+      });
+    });
+  });
+</script>
+
+
+</body></html>
