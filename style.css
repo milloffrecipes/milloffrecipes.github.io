@@ -271,6 +271,19 @@ footer {
   color: var(--ink);
 }
 
+.tag-gf {
+  display: inline-block;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  padding: 0.15rem 0.5rem;
+  border-radius: 999px;
+  border: 1.5px solid var(--herb);
+  color: var(--herb);
+  margin-left: 0.5rem;
+  vertical-align: middle;
+}
+
 .search-bar input:focus {
   outline: none;
   border-color: var(--herb);
