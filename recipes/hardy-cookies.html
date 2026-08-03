@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mrs. Hardy's Chocolate Chip Cookies — Milloff Recipes</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<meta name="theme-color" content="#4A5D3A">
+  <meta name="description" content="Mrs. Hardy's Chocolate Chip Cookies">
+
+  <!-- These four tags are what Pinterest (and Facebook/iMessage previews) read
+       when someone pins or shares this page. Update the og:image and og:url
+       once your site is live and the photo is uploaded. -->
+  <meta property="og:title" content="Mrs. Hardy's Chocolate Chip Cookies">
+  <meta property="og:description" content="Mrs. Hardy's Chocolate Chip Cookies.">
+  <meta property="og:image" content="https://milloffrecipes.github.io/recipes/images/hardy-cookies.jpg">
+  <meta property="og:url" content="https://milloffrecipes.github.io/recipes/hardy-cookies.html">
+  <meta property="og:type" content="article">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Work+Sans:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+  <div class="recipe-wrap">
+
+    <a class="back-link" href="../index.html">&larr; All recipes</a>
+
+    <img class="recipe-hero" src="images/hardy-cookies.jpg" alt="Mrs. Hardy's Chocolate Chip Cookies">
+
+    <h1>Mrs. Hardy's Chocolate Chip Cookies</h1>
+    <p class="recipe-intro">
+      A former teacher made these cookies for Rebecca in high school, and it's now a family favourite.
+    </p>
+
+    <div class="meta-row">
+      <div><span class="label">Prep</span>10 min</div>
+      <div><span class="label">Bake</span>8 to 10 min per cookie sheet</div>
+<div><span class="label">Serves</span><span class="amt" data-amount="4">4</span> dozen</div>    </div>
+
+<div class="filters">
+  <span style="color: var(--ink-soft); font-size: 0.85rem; align-self: center;">Scale:</span>
+  <button class="filter-btn active" data-mult="1">1x</button>
+  <button class="filter-btn" data-mult="2">2x</button>
+  <button class="filter-btn" data-mult="3">3x</button>
+</div>
+    
+    <h2>Ingredients</h2>
+    <ul class="ingredients">
+      <li><span class="amt" data-amount="1">1</span> cup granulated sugar</li>
+      <li><span class="amt" data-amount="1">1</span> cup packed brown sugar</li>
+      <li><span class="amt" data-amount="0.666666666666">2/3</span> cup margarine/butter</li>
+      <li><span class="amt" data-amount="0.666666666666">2/3</span> cup shortening</li>
+      <li><span class="amt" data-amount="2">2</span> eggs, beaten slightly</li>
+      <li><span class="amt" data-amount="2">2</span> tsp vanilla</li>
+      <li><span class="amt" data-amount="3">3</span> cups all-purpose flour</li>
+      <li><span class="amt" data-amount="1">1</span> tsp baking soda</li>
+      <li><span class="amt" data-amount="1">1</span> tsp salt</li>
+      <li><span class="amt" data-amount="500">500</span> g chocolate chips</li>
+    </ul>
+
+    <h2>Steps</h2>
+    <ol class="steps">
+      <li>Heat oven to 350°F.</li>
+      <li>Mix sugars, butter, shortening, eggs and vanilla.</li>
+      <li>Stir in remaining ingredients.</li>
+      <li>Drop by rounded spoonfuls onto greased baking sheet.</li>
+      <li>Bake for 8 to 10 minutes, cool slightly before removing from cookie sheet.</li>
+      <li>Makes 3 to 4 dozen.</li>
+    </ol>
+
+    <div class="notes">
+      <strong>Notes:</strong> Makes great ice cream cookie sandwiches!
+    </div>
+
+  </div>
+
+  <footer>Milloff Recipes &middot; a family collection</footer>
+
+  <script>
+  function toFraction(value) {
+    const whole = Math.floor(value);
+    const frac = value - whole;
+    const fractions = [
+      [0.125,'⅛'],[0.25,'¼'],[0.333,'⅓'],[0.375,'⅜'],
+      [0.5,'½'],[0.625,'⅝'],[0.667,'⅔'],[0.75,'¾'],[0.875,'⅞']
+    ];
+    if (frac < 0.03) return whole === 0 ? '0' : `${whole}`;
+    let closest = null, minDiff = 0.03;
+    for (const [dec, sym] of fractions) {
+      const diff = Math.abs(frac - dec);
+      if (diff < minDiff) { minDiff = diff; closest = sym; }
+    }
+    return closest ? (whole === 0 ? closest : `${whole}${closest}`) : Math.round(value*100)/100 + '';
+  }
+
+  const scaleButtons = document.querySelectorAll('[data-mult]');
+  const amounts = document.querySelectorAll('.amt');
+  scaleButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      scaleButtons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const mult = parseFloat(btn.dataset.mult);
+      amounts.forEach(span => {
+        span.textContent = toFraction(parseFloat(span.dataset.amount) * mult);
+      });
+    });
+  });
+</script>
+  
+</body>
+</html>
+
+
