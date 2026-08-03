@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Beef Strips — Milloff Recipes</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<meta name="theme-color" content="#4A5D3A">
+  <meta name="description" content="Beef Strips">
+
+  <!-- These four tags are what Pinterest (and Facebook/iMessage previews) read
+       when someone pins or shares this page. Update the og:image and og:url
+       once your site is live and the photo is uploaded. -->
+  <meta property="og:title" content="Beef Strips">
+  <meta property="og:description" content="Beef Strips.">
+  <meta property="og:image" content="https://milloffrecipes.github.io/recipes/images/beef-strip.jpg">
+  <meta property="og:url" content="https://milloffrecipes.github.io/recipes/beef-strips.html">
+  <meta property="og:type" content="article">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Work+Sans:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+  <div class="recipe-wrap">
+
+    <a class="back-link" href="../index.html">&larr; All recipes</a>
+
+    <img class="recipe-hero" src="images/beef-strips.jpg" alt="Beef Strips">
+
+    <h1>Beef Strips</h1>
+    <p class="recipe-intro">
+      Beef strips, best served over egg noodles.
+    </p>
+
+    <div class="meta-row">
+      <div><span class="label">Prep</span>20 min</div>
+      <div><span class="label">Cook</span>1 hour</div>
+<div><span class="label">Serves</span><span class="amt" data-amount="6">6</span> servings</div>    </div>
+
+<div class="filters">
+  <span style="color: var(--ink-soft); font-size: 0.85rem; align-self: center;">Scale:</span>
+  <button class="filter-btn active" data-mult="1">1x</button>
+  <button class="filter-btn" data-mult="2">2x</button>
+  <button class="filter-btn" data-mult="3">3x</button>
+</div>
+    
+    <h2>Ingredients</h2>
+    <ul class="ingredients">
+      <li><span class="amt" data-amount="1">1</span> lb beef (round) cut into strips</li>
+      <li><span class="amt" data-amount="2">2</span> tbsp flour</li>
+      <li>vegetable oil</li>
+      <li><span class="amt" data-amount="1">1</span> cup beef broth</li>
+      <li><span class="amt" data-amount="0.5">1/2</span> medium onion, sliced</li>
+      <li><span class="amt" data-amount=0.33>1/3</span> cup red wine vingear</li>
+      <li><span class="amt" data-amount=1>1</span> bag egg noodles</li>
+    </ul>
+
+    <h2>Steps</h2>
+    <ol class="steps">
+      <li>In pan, heat oil over low heat.</li>
+      <li>Add onions and cook until translucent.</li>
+      <li>Add beef slices and cook until browned on both sides.</li>
+      <li>Sprinkle flour over meat and stir until well coated.</li>
+      <li>Pour red wine vinegar over beef. Stir and cook for 5 minutes.</li>
+      <li>Pour beef broth over and cook with covered lid for about 1 hour.</li>
+      <li>During last 15 minutes of cooking, boil water and cook egg noodles.</li>
+    </ol>
+
+    <div class="notes">
+      <strong>Notes:</strong> Serve over noodles, with sliced bread.
+    </div>
+
+  </div>
+
+  <footer>Milloff Recipes &middot; a family collection</footer>
+
+  <script>
+  function toFraction(value) {
+    const whole = Math.floor(value);
+    const frac = value - whole;
+    const fractions = [
+      [0.125,'⅛'],[0.25,'¼'],[0.333,'⅓'],[0.375,'⅜'],
+      [0.5,'½'],[0.625,'⅝'],[0.667,'⅔'],[0.75,'¾'],[0.875,'⅞']
+    ];
+    if (frac < 0.03) return whole === 0 ? '0' : `${whole}`;
+    let closest = null, minDiff = 0.03;
+    for (const [dec, sym] of fractions) {
+      const diff = Math.abs(frac - dec);
+      if (diff < minDiff) { minDiff = diff; closest = sym; }
+    }
+    return closest ? (whole === 0 ? closest : `${whole}${closest}`) : Math.round(value*100)/100 + '';
+  }
+
+  const scaleButtons = document.querySelectorAll('[data-mult]');
+  const amounts = document.querySelectorAll('.amt');
+  scaleButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      scaleButtons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const mult = parseFloat(btn.dataset.mult);
+      amounts.forEach(span => {
+        span.textContent = toFraction(parseFloat(span.dataset.amount) * mult);
+      });
+    });
+  });
+</script>
+  
+</body>
+</html>
+
+
