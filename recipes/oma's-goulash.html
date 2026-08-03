@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Oma's Goulash — Milloff Recipes</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<meta name="theme-color" content="#4A5D3A">
+  <meta name="description" content="Oma's Roast">
+
+  <!-- These four tags are what Pinterest (and Facebook/iMessage previews) read
+       when someone pins or shares this page. Update the og:image and og:url
+       once your site is live and the photo is uploaded. -->
+  <meta property="og:title" content="Oma's Goulash">
+  <meta property="og:description" content="Oma's Goulash.">
+  <meta property="og:image" content="https://milloffrecipes.github.io/recipes/images/goulash.jpg">
+  <meta property="og:url" content="https://milloffrecipes.github.io/recipes/oma's-goulash.html">
+  <meta property="og:type" content="article">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Work+Sans:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+  <div class="recipe-wrap">
+
+    <a class="back-link" href="../index.html">&larr; All recipes</a>
+
+    <img class="recipe-hero" src="images/goulash.jpg" alt="Oma's Goulash">
+
+    <h1>Oma's Goulash</h1>
+    <p class="recipe-intro">
+      Oma's Goulash. Best served over bucatini noodles, or Owen's favourite - mashed potatoes, and a side salad.
+    </p>
+
+    <div class="meta-row">
+      <div><span class="label">Prep</span>5 min</div>
+      <div><span class="label">Cook</span>1 1/2 to 2 hours</div>
+<div><span class="label">Serves</span><span class="amt" data-amount="6">6</span> servings</div>    </div>
+
+<div class="filters">
+  <span style="color: var(--ink-soft); font-size: 0.85rem; align-self: center;">Scale:</span>
+  <button class="filter-btn active" data-mult="1">1x</button>
+  <button class="filter-btn" data-mult="2">2x</button>
+  <button class="filter-btn" data-mult="3">3x</button>
+</div>
+    
+    <h2>Ingredients</h2>
+    <ul class="ingredients">
+      <li><span class="amt" data-amount="1">1</span> lb stewing beef and pork blend</li>
+      <li>salt, pepper</li>
+      <li><span class="amt" data-amount="0.5">1/2</span> medium onion, chopped</li>
+      <li>paprika</li>
+      <li><span class="amt" data-amount="4">4</span> bay leaves</li>
+      <li>1/2 cup water (add more if required)</li>
+      <li>2 tbsp flour and additional water (reserve for last step)</li>
+    </ul>
+
+    <h2>Steps</h2>
+    <ol class="steps">
+      <li>Place stewing beef/pork in frying pan. Add salt and pepper to cover the pot once (slightly less for pepper)</li>
+      <li>Add paprika, so every piece has some on it.</li>
+      <li>Add all other ingredients to frying pan.</li>
+      <li>Cook in covered frying pay for 1 1/2 to 2 hours on low heat until tender.</li>
+      <li>Make flour-water mixture with 2 tbsp flour and cold water. It should be runnier than a paste.</li>
+      <li>Add to the frying pan to make a gravy at the end of the cook time.</li>
+    </ol>
+
+    <div class="notes">
+      <strong>Notes:</strong> Serve with bucatini noodles, or Owens' favourite - mashed potatoes.
+    </div>
+
+  </div>
+
+  <footer>Milloff Recipes &middot; a family collection</footer>
+
+  <script>
+  function toFraction(value) {
+    const whole = Math.floor(value);
+    const frac = value - whole;
+    const fractions = [
+      [0.125,'⅛'],[0.25,'¼'],[0.333,'⅓'],[0.375,'⅜'],
+      [0.5,'½'],[0.625,'⅝'],[0.667,'⅔'],[0.75,'¾'],[0.875,'⅞']
+    ];
+    if (frac < 0.03) return whole === 0 ? '0' : `${whole}`;
+    let closest = null, minDiff = 0.03;
+    for (const [dec, sym] of fractions) {
+      const diff = Math.abs(frac - dec);
+      if (diff < minDiff) { minDiff = diff; closest = sym; }
+    }
+    return closest ? (whole === 0 ? closest : `${whole}${closest}`) : Math.round(value*100)/100 + '';
+  }
+
+  const scaleButtons = document.querySelectorAll('[data-mult]');
+  const amounts = document.querySelectorAll('.amt');
+  scaleButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      scaleButtons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const mult = parseFloat(btn.dataset.mult);
+      amounts.forEach(span => {
+        span.textContent = toFraction(parseFloat(span.dataset.amount) * mult);
+      });
+    });
+  });
+</script>
+  
+</body>
+</html>
+
+
