@@ -316,3 +316,19 @@ footer {
     break-inside: avoid;
   }
 }
+
+.recipe-intro a,
+.notes a,
+.ingredients a,
+.steps a {
+  text-decoration: underline;
+  text-decoration-color: var(--line);
+  text-underline-offset: 2px;
+}
+
+.recipe-intro a:hover,
+.notes a:hover,
+.ingredients a:hover,
+.steps a:hover {
+  text-decoration-color: var(--brick);
+}
