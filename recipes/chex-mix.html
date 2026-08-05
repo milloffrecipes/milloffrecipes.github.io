@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gramma's Chex Mix — Milloff Recipes</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<meta name="theme-color" content="#4A5D3A">
+  <meta name="description" content="Gramma's Chex Mix">
+
+  <!-- These four tags are what Pinterest (and Facebook/iMessage previews) read
+       when someone pins or shares this page. Update the og:image and og:url
+       once your site is live and the photo is uploaded. -->
+  <meta property="og:title" content="Gramma's Chex Mix">
+  <meta property="og:description" content="Gramma's take on Chex Mix">
+  <meta property="og:image" content="https://milloffrecipes.github.io/recipes/images/chex-mix.jpg">
+  <meta property="og:url" content="https://milloffrecipes.github.io/recipes/chex-mix.html">
+  <meta property="og:type" content="article">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Work+Sans:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+  <div class="recipe-wrap">
+
+    <a class="back-link" href="../index.html">&larr; All recipes</a>
+
+    <img class="recipe-hero" src="images/chex-mix.jpg" alt="Gramma's Chex Mix">
+
+    <h1>Gramma's Chex Mix</h1>
+    <p class="recipe-intro">
+      Gramma's take on Chex Mix.
+    </p>
+
+    <div class="meta-row">
+      <div><span class="label">Prep</span>10 min</div>
+      <div><span class="label">Cook</span>1 hour</div>
+<div><span class="label">Serves</span><span class="amt" data-amount="12">12</span> servings</div>    </div>
+
+<div class="filters">
+  <span style="color: var(--ink-soft); font-size: 0.85rem; align-self: center;">Scale:</span>
+  <button class="filter-btn active" data-mult="1">1x</button>
+  <button class="filter-btn" data-mult="2">2x</button>
+  <button class="filter-btn" data-mult="3">3x</button>
+</div>
+    
+    <h2>Ingredients</h2>
+    <ul class="ingredients">
+      <li><span class="amt" data-amount="0.25">1/4</span> margarine or butter</li>
+      <li><span class="amt" data-amount="5">5</span> tsp Worcestershire Sauce (we use Lea & Perrin's)</li>
+      <li><span class="amt" data-amount="1.25">1 1/4</span> seasoned salt (we use Lawry's)</li>
+      <li><span class="amt" data-amount="0.25">1/4</span> garlic powder</li>
+      <li><span class="amt" data-amount="2.666666666">2 2/3</span> Corn Chex cereal</li>
+      <li><span class="amt" data-amount="2.666666666">2 2/3</span> Rice Chex cereal</li>
+      <li><span class="amt" data-amount="2.666666666">2 2/3</span> Wheat Chex cereal</li>
+      <li><span class="amt" data-amount="1">2</span> cup mixed nuts (we often just use peanuts)</li>
+      <li><span class="amt" data-amount="1">1</span> pretzels</li>
+      <li><strong>Note: any type of Chex cereal works, as long as a total of <span class="amt" data-amount="8">8</span> cups of Chex are used. We like to sweeten up the mix with some Honey Nut Chex.</strong></li>
+    </ul>
+
+    <h2>Steps</h2>
+    <ol class="steps">
+      <li>Melt margarine/butter in an open roasting pan in preheated 250°F oven. Stir in seasongs. <em>Rebecca measures seasonings with her heart, Chris measures them out.</em></li>
+      <li>Gradually add cereals, nuts and pretzels. Stir to coat evenly.</li>
+      <li>Bake mix for 1 hour, stirring every 15 minutes.</li>
+      <li>Spread on paper towels to cool. Store in sealed container (or bag).</li>
+    </ol>
+
+    <div class="notes">
+      <strong>Notes:</strong> This doesn't last long in our house. Make two batches!
+    </div>
+
+  </div>
+
+  <footer>Milloff Recipes &middot; a family collection</footer>
+
+  <script>
+  function toFraction(value) {
+    const whole = Math.floor(value);
+    const frac = value - whole;
+    const fractions = [
+      [0.125,'⅛'],[0.25,'¼'],[0.333,'⅓'],[0.375,'⅜'],
+      [0.5,'½'],[0.625,'⅝'],[0.667,'⅔'],[0.75,'¾'],[0.875,'⅞']
+    ];
+    if (frac < 0.03) return whole === 0 ? '0' : `${whole}`;
+    let closest = null, minDiff = 0.03;
+    for (const [dec, sym] of fractions) {
+      const diff = Math.abs(frac - dec);
+      if (diff < minDiff) { minDiff = diff; closest = sym; }
+    }
+    return closest ? (whole === 0 ? closest : `${whole}${closest}`) : Math.round(value*100)/100 + '';
+  }
+
+  const scaleButtons = document.querySelectorAll('[data-mult]');
+  const amounts = document.querySelectorAll('.amt');
+  scaleButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      scaleButtons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const mult = parseFloat(btn.dataset.mult);
+      amounts.forEach(span => {
+        span.textContent = toFraction(parseFloat(span.dataset.amount) * mult);
+      });
+    });
+  });
+</script>
+  
+<script data-goatcounter="https://milloff-recipes.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script> 
+
+</body>
+</html>
+
+
