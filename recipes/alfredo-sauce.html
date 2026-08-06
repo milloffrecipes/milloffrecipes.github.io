@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alfredo Sauce — Milloff Recipes</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<meta name="theme-color" content="#4A5D3A">
+  <meta name="description" content="Alfredo Sauce">
+
+  <!-- These four tags are what Pinterest (and Facebook/iMessage previews) read
+       when someone pins or shares this page. Update the og:image and og:url
+       once your site is live and the photo is uploaded. -->
+  <meta property="og:title" content="Alfredo Sauce">
+  <meta property="og:description" content="Alfredo Sauce">
+  <meta property="og:image" content="https://milloffrecipes.github.io/recipes/images/alfredo-sauce.jpg">
+  <meta property="og:url" content="https://milloffrecipes.github.io/recipes/alfredo-sauce.html">
+  <meta property="og:type" content="article">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Work+Sans:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+  <div class="recipe-wrap">
+
+    <a class="back-link" href="../index.html">&larr; All recipes</a>
+
+    <img class="recipe-hero" src="images/alfredo-sauce.jpg" alt="Alfredo Sauce">
+
+    <h1>Alfredo Sauce</h1>
+    <p class="recipe-intro">
+      A quick and easy sauce for making fettuccine alfredo, or to use in our <a href="cheese-cappelletti.html">cheese cappelletti</a> dish.
+    </p>
+
+    <div class="meta-row">
+      <div><span class="label">Prep</span>10 min</div>
+      <div><span class="label">Cook</span>10 min</div>
+
+<div class="filters">
+  <span style="color: var(--ink-soft); font-size: 0.85rem; align-self: center;">Scale:</span>
+  <button class="filter-btn active" data-mult="1">1x</button>
+  <button class="filter-btn" data-mult="2">2x</button>
+  <button class="filter-btn" data-mult="3">3x</button>
+</div>
+    
+    <h2>Ingredients</h2>
+    <ul class="ingredients">
+      <li><span class="amt" data-amount="1.25">1 1/4</span> cup chicken broth (or water and chicken bouillon)</li>
+      <li><span class="amt" data-amount="25">2</span> tbsp flour</li>
+      <li><span class="amt" data-amount="0.5">1/2 cup</span> cup cream cheese</li>
+      <li><span class="amt" data-amount="3">3</span> tbsp grated parmesan cheese</li>
+      <li><span class="amt" data-amount="0.25">1/4</span> tsp ground nutmeg</li>
+      <li><span class="amt" data-amount="0.125">1/8</span> tsp pepper</li>
+      <li>Scale up ingredients based on how thick you like your sauce or how much nutmeg and pepper you want. It becomes a measure with your heart recipe after you make it often enough!</li>
+    </ul>
+
+    <h2>Steps</h2>
+    <ol class="steps">
+      <li>Combine broth and flour in a medium saucepan.</li>
+      <li>Stir in cream cheese, parmesan cheese, nutmeg and pepper.</li>
+      <li>Cook 2 minutes, stirring constantly with wire whisk to remove lumps, until mixture boils and thickens.</li>
+      <lI>Toss pasta with sauce and garnish as desired.</lI>
+    </ol>
+
+    <div class="notes">
+      <strong>Notes:</strong> Great over fettuccine noodles, topped with chicken or as part of the cheese cappelletti meal.
+    </div>
+
+  </div>
+
+  <footer>Milloff Recipes &middot; a family collection</footer>
+
+  <script>
+  function toFraction(value) {
+    const whole = Math.floor(value);
+    const frac = value - whole;
+    const fractions = [
+      [0.125,'⅛'],[0.25,'¼'],[0.333,'⅓'],[0.375,'⅜'],
+      [0.5,'½'],[0.625,'⅝'],[0.667,'⅔'],[0.75,'¾'],[0.875,'⅞']
+    ];
+    if (frac < 0.03) return whole === 0 ? '0' : `${whole}`;
+    let closest = null, minDiff = 0.03;
+    for (const [dec, sym] of fractions) {
+      const diff = Math.abs(frac - dec);
+      if (diff < minDiff) { minDiff = diff; closest = sym; }
+    }
+    return closest ? (whole === 0 ? closest : `${whole}${closest}`) : Math.round(value*100)/100 + '';
+  }
+
+  const scaleButtons = document.querySelectorAll('[data-mult]');
+  const amounts = document.querySelectorAll('.amt');
+  scaleButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      scaleButtons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const mult = parseFloat(btn.dataset.mult);
+      amounts.forEach(span => {
+        span.textContent = toFraction(parseFloat(span.dataset.amount) * mult);
+      });
+    });
+  });
+</script>
+  
+<script data-goatcounter="https://milloff-recipes.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script> 
+
+</body>
+</html>
+
+
