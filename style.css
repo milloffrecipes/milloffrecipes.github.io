@@ -332,3 +332,61 @@ footer {
 .steps a:hover {
   text-decoration-color: var(--brick);
 }
+
+.notfound-wrap {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 6rem 1.5rem 5rem;
+  text-align: center;
+}
+
+.notfound-eyebrow {
+  display: block;
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 4rem;
+  font-weight: 600;
+  color: var(--herb);
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+
+.notfound-wrap h1 {
+  font-size: 1.8rem;
+  margin-bottom: 0.75rem;
+}
+
+.notfound-wrap p {
+  color: var(--ink-soft);
+  margin-bottom: 2rem;
+}
+
+.notfound-btn {
+  display: inline-block;
+  font-family: 'Work Sans', sans-serif;
+  font-size: 0.9rem;
+  padding: 0.6rem 1.4rem;
+  border-radius: 999px;
+  background: var(--herb);
+  color: var(--card);
+  transition: background 0.15s ease;
+}
+
+.notfound-btn:hover {
+  background: var(--brick);
+  color: var(--card);
+}
+
+.notfound-report {
+  margin-top: 2rem;
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+}
+
+.notfound-report a {
+  color: var(--herb);
+  text-decoration: underline;
+}
+
+.notfound-report a:hover {
+  color: var(--brick);
+}
