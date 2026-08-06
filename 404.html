@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recipe Not Found — Milloff Recipes</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <meta name="theme-color" content="#4A5D3A">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Work+Sans:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="notfound-wrap">
+    <span class="notfound-eyebrow">404</span>
+    <h1>This recipe wandered off.</h1>
+    <p>The page you're looking for doesn't exist, yet.</p>
+    <a class="notfound-btn" href="/index.html">&larr; Back to all recipes</a>
+    <p class="notfound-report">
+      Think this link should work?
+      <a href="#" id="report-link">Let me know</a>
+    </p>
+  </div>
+
+  <footer>Milloff Recipes &middot; a family collection</footer>
+
+  <script>
+    const reportLink = document.getElementById('report-link');
+    const brokenUrl = window.location.href;
+    const subject = encodeURIComponent('Broken link on Milloff Recipes');
+    const body = encodeURIComponent(
+      "Hi,\n\nI found a broken link on the recipe site:\n" + brokenUrl + "\n\nThanks!"
+    );
+    reportLink.href = `mailto:milloffrecipes@gmail.com?subject=${subject}&body=${body}`;
+  </script>
+
+</body>
+</html>
